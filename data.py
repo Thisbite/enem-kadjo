@@ -194,7 +194,7 @@ def generer_rapport():
     }).reset_index().rename(columns={'ID': 'Nombre de ZD effectuées'})
 
     # Statistiques par Zone de Dénombrement
-    stats_zone_D = performances.groupby('Zone de Dénombrement').agg({
+    stats_zone_D = performances.groupby(['Zone de Dénombrement','Sous-préfecture']).agg({
         'ID': 'count',
         'Segment Total': 'sum',
         'Segment Achevé': 'sum',

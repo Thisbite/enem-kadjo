@@ -7,7 +7,7 @@ st.set_page_config(page_title="Enquête Emploi ménage", page_icon="👗", layou
 
 st.sidebar.title("Menu")
 page = st.sidebar.selectbox("Choisir une page",
-                                ["Enregistrer ZD","Performance Equipe","Rapport statistique"])
+                                ["Enregistrer ZD","Statistiques  Equipe","Rapport statistique"])
 
 
 equipe=["Equipe 1","Equipe 2","Equipe 3","Equipe 4","Equipe 5","Equipe 6",]
@@ -52,7 +52,7 @@ elif page=="Rapport statistique":
     # Statistiques de refus
     st.header("Statistiques de Refus")
     performances=data.obtenir_performances()
-    stats_refus = performances.groupby('Zone de Dénombrement').agg({
+    stats_refus = performances.groupby(['Zone de Dénombrement','Sous-préfecture']).agg({
         'Nombre de Ménages Ayant Refusé': 'sum',
         'Nombre d’Individus Ayant Refusé': 'sum'
     }).reset_index()
